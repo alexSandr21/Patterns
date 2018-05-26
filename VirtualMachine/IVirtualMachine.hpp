@@ -25,7 +25,7 @@ class IVirtualMachine
 {
 public:
     explicit IVirtualMachine(){}
-    IVirtualMachine(ProgressObserver* observer, const HardwareParams& params, const std::string& name)
+    IVirtualMachine(IProgressObserver* observer, const HardwareParams& params, const std::string& name)
         : m_progressObserver(observer),
           m_hardwareParams(params),
           m_name(name) {}
@@ -51,7 +51,7 @@ protected:
         }
     }
 
-    ProgressObserver* m_progressObserver;
+    IProgressObserver* m_progressObserver;
     HardwareParams m_hardwareParams;
     std::string m_name;
     std::unique_ptr<IGuestOS> m_guestOS;

@@ -5,14 +5,15 @@
 
 class SCVMMHypervisor : public IHypervisor
 {
+public:
+    explicit SCVMMHypervisor(IProgressObserver* observer);
 private:
-    explicit SCVMMHypervisor(ProgressObserver* observer);
     SCVMMHypervisor(const SCVMMHypervisor&) = delete;
     SCVMMHypervisor(SCVMMHypervisor&&) = delete;
     SCVMMHypervisor & operator = (const SCVMMHypervisor&) = delete;
     SCVMMHypervisor & operator = (SCVMMHypervisor&&) = delete;
 
-    friend class HypervisorFactory;
+    friend class SCVMMFactory;
 
     std::unique_ptr<IVirtualMachine> createVMImpl(const HardwareParams& params, const std::string& name) override;
     void removeVMImpl(const std::string& name) override;

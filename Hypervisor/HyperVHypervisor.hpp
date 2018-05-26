@@ -6,14 +6,15 @@
 
 class HyperVHypervisor : public IHypervisor
 {
+public:
+    explicit HyperVHypervisor(IProgressObserver* observer);
 private:
-    explicit HyperVHypervisor(ProgressObserver* observer);
     HyperVHypervisor(const HyperVHypervisor&) = delete;
     HyperVHypervisor(HyperVHypervisor&&) = delete;
     HyperVHypervisor & operator = (const HyperVHypervisor&) = delete;
     HyperVHypervisor & operator = (HyperVHypervisor&&) = delete;
 
-    friend class HypervisorFactory;
+    friend class HyperVFactory;
 
     std::unique_ptr<IVirtualMachine> createVMImpl(const HardwareParams& params, const std::string& name) override;
     void removeVMImpl(const std::string& name) override;

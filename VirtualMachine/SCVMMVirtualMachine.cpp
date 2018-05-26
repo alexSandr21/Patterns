@@ -1,7 +1,7 @@
 #include "SCVMMVirtualMachine.hpp"
 #include "GuestOSFactory.hpp"
 
-SCVMMVirtualMachine::SCVMMVirtualMachine(ProgressObserver *observer, const HardwareParams &params, const std::string &name)
+SCVMMVirtualMachine::SCVMMVirtualMachine(IProgressObserver *observer, const HardwareParams &params, const std::string &name)
     : IVirtualMachine(observer, params, name)
 {
     std::cout << "SCVMMVirtualMachine created" << std::endl;
@@ -16,7 +16,7 @@ std::unique_ptr<IVirtualMachine> SCVMMVirtualMachine::clone()
 void SCVMMVirtualMachine::installOS(GuestOS guestOs)
 {
     m_guestOS.reset();
-    m_guestOS = GuestOSFactory::getFactory()->getGuestOS(guestOs, m_progressObserver);
+    m_guestOS = GuestOSFactory::getFactory().getGuestOS(guestOs, m_progressObserver);
     m_osType = guestOs;
     m_guestOS->install();
 }

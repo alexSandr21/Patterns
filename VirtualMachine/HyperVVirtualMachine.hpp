@@ -7,7 +7,7 @@
 class HyperVVirtualMachine : public IVirtualMachine
 {
 public:
-    HyperVVirtualMachine(ProgressObserver* observer, const HardwareParams& params, const std::string& name);
+    HyperVVirtualMachine(IProgressObserver* observer, const HardwareParams& params, const std::string& name);
     std::unique_ptr<IVirtualMachine> clone() override;
     void installOS(GuestOS guestOs) override;
     void uninstallOS() override;

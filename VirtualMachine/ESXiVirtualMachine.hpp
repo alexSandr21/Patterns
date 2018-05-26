@@ -6,7 +6,7 @@
 class ESXiVirtualMachine : public IVirtualMachine
 {
 public:
-    ESXiVirtualMachine(ProgressObserver* observer, const HardwareParams& params, const std::string& name);
+    ESXiVirtualMachine(IProgressObserver* observer, const HardwareParams& params, const std::string& name);
     std::unique_ptr<IVirtualMachine> clone() override;
     void installOS(GuestOS guestOs) override;
     void uninstallOS() override;

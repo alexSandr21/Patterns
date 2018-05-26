@@ -7,7 +7,7 @@
 class PhysicalPCVirtualMachine : public IVirtualMachine
 {
 public:
-    PhysicalPCVirtualMachine(ProgressObserver* observer, const HardwareParams& params, const std::string& name);
+    PhysicalPCVirtualMachine(IProgressObserver* observer, const HardwareParams& params, const std::string& name);
     std::unique_ptr<IVirtualMachine> clone() override;
     void installOS(GuestOS guestOs) override;
     void uninstallOS() override;

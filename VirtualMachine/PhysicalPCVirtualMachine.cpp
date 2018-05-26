@@ -1,7 +1,7 @@
 #include "PhysicalPCVirtualMachine.hpp"
 #include "GuestOSFactory.hpp"
 
-PhysicalPCVirtualMachine::PhysicalPCVirtualMachine(ProgressObserver *observer, const HardwareParams &params, const std::string &name)
+PhysicalPCVirtualMachine::PhysicalPCVirtualMachine(IProgressObserver *observer, const HardwareParams &params, const std::string &name)
     : IVirtualMachine(observer, params, name)
 {
     std::cout << "PhysicalPCVirtualMachine created" << std::endl;
@@ -16,7 +16,7 @@ std::unique_ptr<IVirtualMachine> PhysicalPCVirtualMachine::clone()
 void PhysicalPCVirtualMachine::installOS(GuestOS guestOs)
 {
     m_guestOS.reset();
-    m_guestOS = GuestOSFactory::getFactory()->getGuestOS(guestOs, m_progressObserver);
+    m_guestOS = GuestOSFactory::getFactory().getGuestOS(guestOs, m_progressObserver);
     m_osType = guestOs;
     m_guestOS->install();
 }

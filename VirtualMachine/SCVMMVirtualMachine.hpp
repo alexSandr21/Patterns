@@ -6,7 +6,7 @@
 class SCVMMVirtualMachine : public IVirtualMachine
 {
 public:
-    SCVMMVirtualMachine(ProgressObserver* observer, const HardwareParams& params, const std::string& name);
+    SCVMMVirtualMachine(IProgressObserver* observer, const HardwareParams& params, const std::string& name);
     std::unique_ptr<IVirtualMachine> clone() override;
     void installOS(GuestOS guestOs) override;
     void uninstallOS() override;

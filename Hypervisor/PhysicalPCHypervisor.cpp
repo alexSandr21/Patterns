@@ -1,7 +1,7 @@
 #include "PhysicalPCHypervisor.hpp"
 #include "PhysicalPCVirtualMachine.hpp"
 
-PhysicalPCHypervisor::PhysicalPCHypervisor(ProgressObserver *observer)
+PhysicalPCHypervisor::PhysicalPCHypervisor(IProgressObserver *observer)
     : IHypervisor(observer)
 {
     std::cout << "PhysicalPCHypervisor created" << std::endl;

@@ -1,7 +1,7 @@
 #include "SCVMMHypervisor.hpp"
 #include "SCVMMVirtualMachine.hpp"
 
-SCVMMHypervisor::SCVMMHypervisor(ProgressObserver *observer)
+SCVMMHypervisor::SCVMMHypervisor(IProgressObserver *observer)
     : IHypervisor(observer)
 {
     std::cout << "SCVMMHypervisor created" << std::endl;

@@ -69,9 +69,9 @@ IVirtualMachine* IHypervisor::getVM(const std::string &name)
     return (iter->second).get();
 }
 
-std::vector<IVirtualMachine *> IHypervisor::getAllVMs()
+std::list<IVirtualMachine *> IHypervisor::getAllVMs()
 {
-    std::vector<IVirtualMachine *> ret;
+    std::list<IVirtualMachine *> ret;
 
     for (auto iter = m_vmMap.cbegin(); iter != m_vmMap.cend(); ++iter)
     {

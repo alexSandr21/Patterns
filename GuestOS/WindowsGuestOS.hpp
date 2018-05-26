@@ -6,7 +6,7 @@
 class WindowsGuestOS : public IGuestOS
 {
 public:
-    explicit WindowsGuestOS(ProgressObserver* observer)
+    explicit WindowsGuestOS(IProgressObserver* observer)
         : IGuestOS(observer){}
     WindowsGuestOS(const WindowsGuestOS& copy);
     WindowsGuestOS & operator = (const WindowsGuestOS& copy);

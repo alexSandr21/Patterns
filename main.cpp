@@ -1,5 +1,8 @@
-
-#include "HypervisorFactory.hpp"
+#include "ProgressObserver.hpp"
+#include "HyperVFactory.hpp"
+#include "ESXiFactory.hpp"
+#include "PhysicalPCFactory.hpp"
+#include "SCVMMFactory.hpp"
 
 void printDel()
 {
@@ -10,21 +13,24 @@ int main(int argc, char *argv[])
 {
     try
     {
-        std::unique_ptr<ProgressObserver> progress(new ProgressObserver());
-        auto factory = HypervisorFactory::getFactory();
-        std::vector<IHypervisor*> hypervisorVec;
-        HardwareParams params{1, 1, 1, NIC::Bridge};
+        std::unique_ptr<IProgressObserver> progress(new ProgressObserver());
+
+        std::list<std::unique_ptr<IHypervisorFactory>> hypervisorFactories;
+        hypervisorFactories.emplace_back(std::unique_ptr<IHypervisorFactory>(new HyperVFactory()));
+        hypervisorFactories.emplace_back(std::unique_ptr<IHypervisorFactory>(new PhysicalPCFactory()));
+        hypervisorFactories.emplace_back(std::unique_ptr<IHypervisorFactory>(new ESXiFactory()));
+        hypervisorFactories.emplace_back(std::unique_ptr<IHypervisorFactory>(new SCVMMFactory()));
+
+        std::list<std::unique_ptr<IHypervisor>> hypervisorVec;
+        for (const auto & factory : hypervisorFactories)
+        {
+            printDel();
+            hypervisorVec.emplace_back(factory->getHypervisor(progress.get()));
+        }
 
         printDel();
-        hypervisorVec.emplace_back(factory->getHypervisor(HypervisorType::HyperV, progress.get()));
-        printDel();
-        hypervisorVec.emplace_back(factory->getHypervisor(HypervisorType::ESXi, progress.get()));
-        printDel();
-        hypervisorVec.emplace_back(factory->getHypervisor(HypervisorType::SCVMM, progress.get()));
-        printDel();
-        hypervisorVec.emplace_back(factory->getHypervisor(HypervisorType::PhysicalPC, progress.get()));
-        printDel();
-        printDel();
+
+        HardwareParams params{1, 1, 1, NIC::Bridge};
 
         for (const auto& hyper : hypervisorVec)
         {

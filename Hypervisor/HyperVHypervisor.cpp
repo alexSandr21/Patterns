@@ -1,7 +1,7 @@
 #include "HyperVHypervisor.hpp"
 #include "HyperVVirtualMachine.hpp"
 
-HyperVHypervisor::HyperVHypervisor(ProgressObserver *observer)
+HyperVHypervisor::HyperVHypervisor(IProgressObserver *observer)
     : IHypervisor(observer)
 {
     std::cout << "HyperVHypervisor created" << std::endl;

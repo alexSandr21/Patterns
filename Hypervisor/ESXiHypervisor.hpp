@@ -5,14 +5,15 @@
 
 class ESXiHypervisor : public IHypervisor
 {
+public:
+    explicit ESXiHypervisor(IProgressObserver* observer);
 private:
-    explicit ESXiHypervisor(ProgressObserver* observer);
     ESXiHypervisor(const ESXiHypervisor&) = delete;
     ESXiHypervisor(ESXiHypervisor&&) = delete;
     ESXiHypervisor & operator = (const ESXiHypervisor&) = delete;
     ESXiHypervisor & operator = (ESXiHypervisor&&) = delete;
 
-    friend class HypervisorFactory;
+    friend class ESXiFactory;
 
     std::unique_ptr<IVirtualMachine> createVMImpl(const HardwareParams& params, const std::string& name) override;
     void removeVMImpl(const std::string& name) override;

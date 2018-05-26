@@ -1,7 +1,7 @@
 #include "HyperVVirtualMachine.hpp"
 #include "GuestOSFactory.hpp"
 
-HyperVVirtualMachine::HyperVVirtualMachine(ProgressObserver *observer, const HardwareParams &params, const std::string &name)
+HyperVVirtualMachine::HyperVVirtualMachine(IProgressObserver *observer, const HardwareParams &params, const std::string &name)
     : IVirtualMachine(observer, params, name)
 {
     std::cout << "HyperVVirtualMachine created" << std::endl;
@@ -16,7 +16,7 @@ std::unique_ptr<IVirtualMachine> HyperVVirtualMachine::clone()
 void HyperVVirtualMachine::installOS(GuestOS guestOs)
 {
     m_guestOS.reset();
-    m_guestOS = GuestOSFactory::getFactory()->getGuestOS(guestOs, m_progressObserver);
+    m_guestOS = GuestOSFactory::getFactory().getGuestOS(guestOs, m_progressObserver);
     m_osType = guestOs;
     m_guestOS->install();
 }

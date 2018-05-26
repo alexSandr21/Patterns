@@ -2,17 +2,13 @@
 #include "LinuxGuestOS.hpp"
 #include "WindowsGuestOS.hpp"
 
-GuestOSFactory *GuestOSFactory::getFactory()
+GuestOSFactory & GuestOSFactory::getFactory()
 {
-    static std::unique_ptr<GuestOSFactory> factory;
-    if (!factory.get())
-    {
-        factory.reset(new GuestOSFactory());
-    }
-    return factory.get();
+    static GuestOSFactory factory;
+    return factory;
 }
 
-std::unique_ptr<IGuestOS> GuestOSFactory::getGuestOS(GuestOS guest, ProgressObserver* observer)
+std::unique_ptr<IGuestOS> GuestOSFactory::getGuestOS(GuestOS guest, IProgressObserver* observer)
 {
     std::unique_ptr<IGuestOS> guestPtr;
 

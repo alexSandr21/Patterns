@@ -16,7 +16,7 @@ class IGuestOS
 {
 public:
     explicit IGuestOS() {}
-    explicit IGuestOS(ProgressObserver* observer)
+    explicit IGuestOS(IProgressObserver* observer)
         : m_progressObserver(observer) {}
     virtual ~IGuestOS() {}
 
@@ -27,7 +27,7 @@ public:
     void execApp(const std::string& appName);
 
 protected:
-    ProgressObserver* m_progressObserver;
+    IProgressObserver* m_progressObserver;
     std::map<std::string, std::unique_ptr<IApplication>> m_appMap;
 
 private:

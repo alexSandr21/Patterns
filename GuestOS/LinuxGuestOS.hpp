@@ -6,7 +6,7 @@
 class LinuxGuestOS : public IGuestOS
 {
 public:
-    explicit LinuxGuestOS(ProgressObserver* observer)
+    explicit LinuxGuestOS(IProgressObserver* observer)
         : IGuestOS(observer){}
     LinuxGuestOS(const LinuxGuestOS& copy);
     LinuxGuestOS & operator = (const LinuxGuestOS& copy);

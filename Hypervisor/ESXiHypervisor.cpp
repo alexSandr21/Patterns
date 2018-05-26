@@ -1,7 +1,7 @@
 #include "ESXiHypervisor.hpp"
 #include "ESXiVirtualMachine.hpp"
 
-ESXiHypervisor::ESXiHypervisor(ProgressObserver *observer)
+ESXiHypervisor::ESXiHypervisor(IProgressObserver *observer)
     : IHypervisor(observer)
 {
     std::cout << "ESXiHypervisor created" << std::endl;

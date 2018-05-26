@@ -6,7 +6,7 @@
 class TestApplication : public IApplication
 {
 public:
-    TestApplication(ProgressObserver* observer, const std::string& name)
+    TestApplication(IProgressObserver* observer, const std::string& name)
         : IApplication(observer, name) {}
 
     void install() override;

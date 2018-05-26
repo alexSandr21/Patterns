@@ -1,21 +1,18 @@
 #ifndef PROGRESSOBSERVER_HPP
 #define PROGRESSOBSERVER_HPP
 
-#include <iostream>
-#include <thread>
+#include "IProgressObserver.hpp"
 
-const int UPDATE_PROGRESS_TIMEOUT = 100;
-
-class ProgressObserver
+class ProgressObserver : public IProgressObserver
 {
 public:
     explicit ProgressObserver(const size_t step = 5)
         : m_step(step),
           m_total(0) {}
 
-    void setStep(const size_t step);
-    void updateProgress();
-    void endProgress();
+    void setStep(const size_t step) override;
+    void updateProgress() override;
+    void endProgress() override;
 
 private:
     size_t m_step;

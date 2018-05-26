@@ -24,7 +24,6 @@ SOURCES += main.cpp \
     Hypervisor/ESXiHypervisor.cpp \
     Hypervisor/SCVMMHypervisor.cpp \
     Hypervisor/PhysicalPCHypervisor.cpp \
-    HypervisorFactory/HypervisorFactory.cpp \
     ProgressObserver/ProgressObserver.cpp \
     VirtualMachine/ESXiVirtualMachine.cpp \
     VirtualMachine/SCVMMVirtualMachine.cpp \
@@ -34,7 +33,11 @@ SOURCES += main.cpp \
     GuestOS/IGuestOS.cpp \
     GuestOS/LinuxGuestOS.cpp \
     GuestOS/WindowsGuestOS.cpp \
-    Application/TestApplication.cpp
+    Application/TestApplication.cpp \
+    HypervisorFactory/HyperVFactory.cpp \
+    HypervisorFactory/ESXiFactory.cpp \
+    HypervisorFactory/SCVMMFactory.cpp \
+    HypervisorFactory/PhysicalPCFactory.cpp
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
@@ -48,7 +51,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 HEADERS += \
-    HypervisorFactory/HypervisorFactory.hpp \
     Hypervisor/IHypervisor.hpp \
     Hypervisor/ESXiHypervisor.hpp \
     Hypervisor/HyperVHypervisor.hpp \
@@ -65,7 +67,13 @@ HEADERS += \
     GuestOS/WindowsGuestOS.hpp \
     Application/IApplication.hpp \
     Application/TestApplication.hpp \
-    ProgressObserver/ProgressObserver.hpp
+    ProgressObserver/ProgressObserver.hpp \
+    ProgressObserver/IProgressObserver.hpp \
+    HypervisorFactory/IHypervisorFactory.hpp \
+    HypervisorFactory/HyperVFactory.hpp \
+    HypervisorFactory/ESXiFactory.hpp \
+    HypervisorFactory/SCVMMFactory.hpp \
+    HypervisorFactory/PhysicalPCFactory.hpp
 
 
 

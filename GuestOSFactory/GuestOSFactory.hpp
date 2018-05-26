@@ -6,8 +6,8 @@
 class GuestOSFactory
 {
 public:
-    static GuestOSFactory* getFactory();
-    std::unique_ptr<IGuestOS> getGuestOS(GuestOS guest, ProgressObserver* observer);
+    static GuestOSFactory & getFactory();
+    std::unique_ptr<IGuestOS> getGuestOS(GuestOS guest, IProgressObserver* observer);
 private:
     explicit GuestOSFactory() {}
     GuestOSFactory(const GuestOSFactory&) = delete;

@@ -2,7 +2,7 @@
 
 #include "GuestOSFactory.hpp"
 
-ESXiVirtualMachine::ESXiVirtualMachine(ProgressObserver *observer, const HardwareParams &params, const std::string &name)
+ESXiVirtualMachine::ESXiVirtualMachine(IProgressObserver *observer, const HardwareParams &params, const std::string &name)
     : IVirtualMachine(observer, params, name)
 {
     std::cout << "ESXiVirtualMachine created" << std::endl;
@@ -17,7 +17,7 @@ std::unique_ptr<IVirtualMachine> ESXiVirtualMachine::clone()
 void ESXiVirtualMachine::installOS(GuestOS guestOs)
 {
     m_guestOS.reset();
-    m_guestOS = GuestOSFactory::getFactory()->getGuestOS(guestOs, m_progressObserver);
+    m_guestOS = GuestOSFactory::getFactory().getGuestOS(guestOs, m_progressObserver);
     m_osType = guestOs;
     m_guestOS->install();
 }

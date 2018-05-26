@@ -1,8 +1,6 @@
 #include "ProgressObserver.hpp"
 #include <string>
 
-const int MAX_PERCENT = 100;
-
 void ProgressObserver::setStep(const size_t step)
 {
     m_step = step;
